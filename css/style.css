@@ -205,9 +205,22 @@ body {
 
 .link, .social {
     margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    height: clamp(2rem, 5vw, 4rem);
     position: relative;
     overflow: hidden;
 }
+.link:hover a:first-child, .social:hover a:first-child{
+    transform: translateY(-100%);
+}
+.link:hover a:last-child, .social:hover a:last-child{
+    transform: translateY(-100%);
+}
+
+
 
 .link a, .social a {
     color: white;
@@ -221,10 +234,10 @@ body {
     font-family: FontStyleNew;
 }
 
-.link a::after, .social a::after {
+.link::after, .social::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     left: 0;
     width: 100%;
     height: 2px;
@@ -238,7 +251,7 @@ body {
     transform: translateX(20px);
 }
 
-.link a:hover::after, .social a:hover::after {
+.link:hover::after, .social:hover::after {
     transform: scaleX(1);
     transform-origin: left;
 }
