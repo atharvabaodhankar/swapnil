@@ -15,6 +15,17 @@
     /* Light grey for borders */
 }
 
+@font-face {
+    font-family: ArsenicaDemibold;
+    src: url(./ArsenicaTrial-Demibold.woff2);
+}
+
+@font-face {
+    font-family: FontStyleNew;
+    src: url(./e9849a0be596192c822daa1765c81db9.woff2);
+}
+
+
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--bg-color);
@@ -199,10 +210,12 @@ body {
     justify-content: space-between;
     align-items: flex-end;
 }
-.link{
+
+.link {
     position: relative;
 }
-.link a{
+
+.link a {
     text-decoration: none;
     color: #fff;
     font-size: 48px;
