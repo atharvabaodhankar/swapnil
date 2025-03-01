@@ -256,11 +256,17 @@ body {
     transform-origin: left;
 }
 .hero{
-    background-color: #999D9E;
+    background-color: #a4a4a4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 .hero-img{
-    /* width: 100%; */
+    position: absolute;
+    bottom: 0;
     height: 100%;
+    z-index: 20;
 }
 .hero-img img{
     width: 100%;
@@ -271,16 +277,15 @@ body {
 
 /* Maqruee */
 #marquee {
-    position: absolute;
-    left: 0;
-    bottom: 0;
+    align-self: flex-end;
     color: #eee;
     padding: 3rem 0;
     font-weight: 600;
-    font-size: 10rem;
+    font-size: clamp(4rem, 8vw, 10rem);
     text-transform: uppercase;
     overflow: hidden;
     user-select: none;
+    margin-bottom: 6rem;
 }
 
 .marquee_inner {
@@ -294,6 +299,7 @@ body {
     display: flex;
     align-items: center;
     flex-shrink: 0;
+    font-family: ArsenicaDemibold;
     padding: 0 0.4rem;
 }
 
@@ -314,6 +320,19 @@ body {
 .arrow.active {
     transform: rotate(0deg);
     transition: all .6s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+@media (max-width: 1024px) {
+    .hero-img{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+    .arrow {
+        width: 4rem;
+        height: 3rem;
+    }
 }
 
 
