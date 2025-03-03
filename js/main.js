@@ -141,5 +141,20 @@ gsap.utils.toArray(".parallax-img-container").forEach(function(container) {
     }); 
 });
 
-// Split Text
+
+  const parallaxText = gsap.utils.toArray('.parallax-text');
+
+  parallaxText.forEach((heading, index) => {
+    gsap.to(heading, {
+      yPercent: -50,
+      scrollTrigger: {
+        trigger: '.hero',
+        start: 'top top', 
+        end: 'bottom top', 
+        scrub: true, 
+       
+      },
+      ease: "none"
+    });
+  });
 
