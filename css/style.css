@@ -36,6 +36,9 @@ body {
 
 #sample {
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     background-color: #1b1b1b;
 }
@@ -273,7 +276,18 @@ body {
     height: 100%;
     object-fit: cover;
 }
-
+.hero-text{
+    font-size: 1.5vw;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    top: 0;
+    padding: 0 4vw;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    color: var(--bg-color);
+}
 
 /* Maqruee */
 #marquee {
@@ -321,6 +335,33 @@ body {
     transform: rotate(0deg);
     transition: all .6s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
+
+/* Marquee End */
+
+/* Parallax Image Start */
+.parallax-img-container {
+    position: relative;
+    overflow: hidden;
+    background-color: red;
+    width: 30vw;
+    height: 30vw;
+}
+.parallax-img-container img {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 170%;
+    object-fit: cover;
+    object-position: center;
+    padding: 0;
+  }
+  
+
+/* Parallax Image End */
+
+
+
 @media (max-width: 1024px) {
     .hero-img{
         position: absolute;

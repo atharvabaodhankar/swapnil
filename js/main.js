@@ -83,9 +83,6 @@ menuToggle.addEventListener("click", () => {
   }
 });
 
-
-
-
 // Marquee
 
 function marquee() {
@@ -124,5 +121,25 @@ function marquee() {
     currentScroll = window.pageYOffset;
   });
 }
-
 marquee();
+
+// Parallax Image
+
+gsap.utils.toArray(".parallax-img-container").forEach(function(container) {
+  let image = container.querySelector("img");
+
+    gsap.to(image, {
+      y: () => image.offsetHeight - container.offsetHeight,
+      ease: "none",
+      scrollTrigger: {
+        trigger: container,
+        scrub: true,
+        pin: false,
+        markers: true,
+        invalidateOnRefresh: true
+      },
+    }); 
+});
+
+// Split Text
+
