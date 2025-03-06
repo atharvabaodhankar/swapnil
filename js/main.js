@@ -135,7 +135,6 @@ gsap.utils.toArray(".parallax-img-container").forEach(function(container) {
         trigger: container,
         scrub: true,
         pin: false,
-        markers: true,
         invalidateOnRefresh: true
       },
     }); 
@@ -156,5 +155,17 @@ gsap.utils.toArray(".parallax-img-container").forEach(function(container) {
       },
       ease: "none"
     });
+  });
+
+  gsap.to(".marquee-parallax", {
+    yPercent: 10,
+    scrollTrigger: {
+      trigger: '.hero',
+      start: 'top top', 
+      end: 'bottom top', 
+      scrub: true, 
+     
+    },
+    ease: "none"
   });
 
