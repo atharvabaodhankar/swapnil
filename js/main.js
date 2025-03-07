@@ -25,7 +25,7 @@ menuToggle.addEventListener("click", () => {
     menuToggle.classList.remove("closed");
     menuToggle.classList.add("opened");
     isAnimating = true;
-    
+
     // Enhanced open animation
     gsap.to(menu, {
       clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
@@ -33,7 +33,7 @@ menuToggle.addEventListener("click", () => {
       duration: 1.5,
       onStart: () => {
         menu.style.pointerEvents = "all";
-      }
+      },
     });
 
     // Animate menu items
@@ -46,7 +46,7 @@ menuToggle.addEventListener("click", () => {
       delay: 0.5,
       onComplete: () => {
         isAnimating = false;
-      }
+      },
     });
   } else {
     menuToggle.classList.remove("opened");
@@ -59,7 +59,7 @@ menuToggle.addEventListener("click", () => {
       opacity: 0,
       stagger: 0.05,
       duration: 0.5,
-      ease: "power2.in"
+      ease: "power2.in",
     });
 
     // Enhanced close animation
@@ -71,14 +71,14 @@ menuToggle.addEventListener("click", () => {
       onComplete: () => {
         menu.style.pointerEvents = "none";
         gsap.set(menu, {
-          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         });
         // Reset menu items position
         gsap.set(".link, .social", {
-          clearProps: "all"
+          clearProps: "all",
         });
         isAnimating = false;
-      }
+      },
     });
   }
 });
@@ -125,62 +125,76 @@ marquee();
 
 // Parallax Image
 
-gsap.utils.toArray(".parallax-img-container").forEach(function(container) {
+gsap.utils.toArray(".parallax-img-container").forEach(function (container) {
   let image = container.querySelector("img");
 
-    gsap.to(image, {
-      y: () => image.offsetHeight - container.offsetHeight,
-      ease: "none",
-      scrollTrigger: {
-        trigger: container,
-        scrub: true,
-        pin: false,
-        invalidateOnRefresh: true
-      },
-    }); 
-});
-
-
-  const parallaxText = gsap.utils.toArray('.parallax-text');
-
-  parallaxText.forEach((heading, index) => {
-    gsap.to(heading, {
-      yPercent: -50,
-      scrollTrigger: {
-        trigger: '.hero',
-        start: 'top top', 
-        end: 'bottom top', 
-        scrub: true, 
-       
-      },
-      ease: "none"
-    });
-  });
-
-  gsap.to(".marquee-parallax", {
-    yPercent: 10,
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top top', 
-      end: 'bottom top', 
-      scrub: true, 
-     
-    },
-    ease: "none"
-  });
-
-  let sections = gsap.utils.toArray(".timeline");
-
-  gsap.to(sections, {
-    xPercent: -100 * (sections.length - 1),
+  gsap.to(image, {
+    y: () => image.offsetHeight - container.offsetHeight,
     ease: "none",
     scrollTrigger: {
-      trigger: "#timeline",
-      pin: true,
-      scrub: 1,
-      snap: 1 / (sections.length - 1),
-      end: () => "+=" + document.querySelector("#timeline").offsetWidth
-    }
+      trigger: container,
+      scrub: true,
+      pin: false,
+      invalidateOnRefresh: true,
+    },
   });
-  
-  
+});
+
+const parallaxText = gsap.utils.toArray(".parallax-text");
+
+parallaxText.forEach((heading, index) => {
+  gsap.to(heading, {
+    yPercent: -50,
+    scrollTrigger: {
+      trigger: ".hero",
+      start: "top top",
+      end: "bottom top",
+      scrub: true,
+    },
+    ease: "none",
+  });
+});
+
+gsap.to(".marquee-parallax", {
+  yPercent: 10,
+  scrollTrigger: {
+    trigger: ".hero",
+    start: "top top",
+    end: "bottom top",
+    scrub: true,
+  },
+  ease: "none",
+});
+
+const timelineSections = document.querySelectorAll(".timeline");
+const totalSections = timelineSections.length;
+
+gsap.to(".timeline", {
+  xPercent:
+    window.innerWidth < 700
+      ? -(100 * (totalSections - 1) + 25)
+      : -(100 * (totalSections - 1)), // Calculate exact percentage based on number of sections
+  ease: "none",
+  scrollTrigger: {
+    scroller: "body",
+    trigger: "#timeline",
+    scrub: true,
+    start: "top top",
+    end: () => `+=${100 * totalSections}%`, // Dynamic end point based on number of sections
+    pin: true,
+    anticipatePin: 1,
+  },
+});
+
+// gsap.to(".timeline", {
+//   xPercent: -530,
+//   ease: "none",
+//   scrollTrigger: {
+//     scroller: "body",
+//     trigger: "#timeline",
+//     scrub: true,
+//     start: "top top",
+//     end: "+400% top",
+//     pin: true,
+//   },
+// })

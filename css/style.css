@@ -439,7 +439,7 @@ body {
 
 /* Timeline Start*/
 #timeline {
-    width: 400%;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
@@ -450,6 +450,7 @@ body {
 
 .timeline {
     width: 100vw;
+    min-width: 100vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -463,7 +464,7 @@ body {
     padding: 2.5rem;
     border-radius: 1.5rem;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-    width: 550px;
+    width: 650px;
     position: relative;
     z-index: 1;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -476,7 +477,7 @@ body {
 }
 
 .timeline-branch {
-    width: 100%;
+    width: 50%;
     background: linear-gradient(90deg, #1a1a1a, #2a2a2a);
     height: 6px;
     position: relative;
@@ -629,7 +630,9 @@ body {
     background-color: burlywood;
     transition: transform 0.2s ease, background-color 0.2s ease;
 }
-
+.timeline-branch-end{
+    opacity: 0;
+}
 /* Timeline End */
 
 
@@ -647,6 +650,15 @@ body {
     .arrow {
         width: 4rem;
         height: 3rem;
+    }
+    .timeline-content h3 {
+        font-size: 1.4rem;
+    }
+    .timeline-content h4 {
+        font-size: 1.2rem;
+    }
+    .contributions li {
+        font-size: 14px;
     }
 }
 
@@ -673,7 +685,15 @@ body {
         width: 350px;
         height: 450px;
     }
-
+    .timeline-branch {
+        width: 30%;
+    }
+    .timeline {
+        padding: 0 0 0 2.4rem;
+    }
+    .timeline-start-page .timeline-branch {
+        margin-left: 0rem;
+    }
 }
 
 @media (max-width: 425px) {
@@ -700,4 +720,17 @@ body {
     .about-text p {
         font-size: 16px;
     }
+    .timeline-branch {
+        width: 40%;
+        height: 3px;
+    }
+    .timeline-branch::before, .timeline-branch::after {
+        width: 10px;
+        height: 10px;
+    }
+    .timeline {
+        gap: 10px;
+        padding: 0 0 0 10px;
+    }
+    
 }
