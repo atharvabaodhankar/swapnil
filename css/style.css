@@ -401,14 +401,12 @@ body {
     font-family: 'Poppins', sans-serif;
     color: #1f2937;
 }
-
 .about-header .line {
     width: 60px;
     height: 5px;
     background-color: var(--heading-color);
     border-radius: 10px;
 }
-
 .about-text {
     line-height: 1.8;
     font-size: 1.1rem;
@@ -416,12 +414,10 @@ body {
     text-align: justify;
     color: #374151;
 }
-
 .about-text p {
     margin-bottom: 20px;
     position: relative;
 }
-
 .about-img {
     width: 400px;
     border-radius: 20px;
@@ -633,7 +629,13 @@ body {
 .timeline-branch-end{
     opacity: 0;
 }
+
+
+
+
+
 /* Timeline End */
+
 
 
 /* Media Queries */
@@ -731,6 +733,9 @@ body {
     .timeline {
         gap: 10px;
         padding: 0 0 0 10px;
+    }
+    .timeline-content {
+        padding: 22px;
     }
     
 }
