@@ -172,7 +172,7 @@ const totalSections = timelineSections.length;
 gsap.to(".timeline", {
   xPercent:
     window.innerWidth < 700
-      ? -(100 * (totalSections - 1) + 25)
+      ? -(100 * (totalSections - 1) - 15)
       : -(100 * (totalSections - 1) - 25), // Calculate exact percentage based on number of sections
   ease: "none",
   scrollTrigger: {

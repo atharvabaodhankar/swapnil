@@ -13,6 +13,7 @@
     /* Light blue for hover states */
     --border-color: #e2e8f0;
     /* Light grey for borders */
+    --background-white : #EEEFF2;
 }
 
 @font-face {
@@ -375,7 +376,7 @@ body {
     justify-content: center;
     flex-direction: column;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    background: var(--background-white);
 }
 
 .about-content {
@@ -439,7 +440,7 @@ body {
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
-    background: linear-gradient(135deg, #f3f4f6, #e5e7eb);
+    background: var(--background-white);
     position: relative;
     overflow: hidden;
 }
@@ -630,7 +631,20 @@ body {
     opacity: 0;
 }
 
-
+.timeline-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-white);
+}
+.timeline-heading{
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #1f2937;
+    width: 80%;
+}
 
 
 
