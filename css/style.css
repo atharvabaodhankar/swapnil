@@ -768,7 +768,7 @@ body {
     background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
 }
 .skill-category:hover .skill-progress::after{
-    animation: shine 2s ;
+    animation: shine 1.5s forwards;
 }
 
 @keyframes shine {
@@ -989,9 +989,9 @@ body {
     padding: 40px;
     border-radius: 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .cert-category:hover {
@@ -1028,6 +1028,7 @@ body {
     background: rgba(255, 255, 255, 0.5);
     border-radius: 16px;
     transition: all 0.3s ease;
+    text-decoration: none !important;
 }
 
 .cert-item:hover {
@@ -1046,12 +1047,14 @@ body {
     color: var(--heading-color);
     margin-bottom: 5px;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .cert-details p {
     font-size: 0.95rem;
     color: #666;
     margin-bottom: 8px;
+    text-decoration: none;
 }
 
 @media (max-width: 1200px) {
