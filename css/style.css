@@ -399,7 +399,7 @@ body {
     font-size: clamp(3rem, 7vw, 5rem);
     font-weight: 700;
     margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'ArsenicaDemibold', sans-serif;
     color: #1f2937;
 }
 .about-header .line {
@@ -646,7 +646,7 @@ body {
     font-size: clamp(3rem, 7vw, 5rem);
     font-weight: 700;
     margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'ArsenicaDemibold', sans-serif;
     color: #1f2937;
     width: 80%;
 }
