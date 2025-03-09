@@ -404,9 +404,9 @@ body {
 }
 .about-header .line {
     width: 60px;
-    height: 5px;
-    background-color: var(--heading-color);
-    border-radius: 10px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--heading-color), rgba(32, 32, 32, 0.3));
+    border-radius: 50px;
 }
 .about-text {
     line-height: 1.8;
@@ -756,5 +756,7 @@ body {
     .timeline-content {
         padding: 22px;
     }
-    
+    #about-us {
+        padding: 100px 0px;
+    }
 }
