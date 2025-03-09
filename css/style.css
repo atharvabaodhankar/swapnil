@@ -954,3 +954,245 @@ body {
         padding: 100px 0px;
     }
 }
+
+/* Certifications Section */
+#certifications {
+    padding: 120px 5%;
+    background: linear-gradient(135deg, var(--background-white) 0%, #f8f9fa 100%);
+}
+
+.certifications-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.certifications-header h2 {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--heading-color), #4a4a4a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-family: 'ArsenicaDemibold', sans-serif;
+}
+
+.certifications-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.cert-category {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.cert-category:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.cert-category h3 {
+    font-size: 2rem;
+    color: var(--heading-color);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cert-category h3 i {
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    opacity: 0.8;
+}
+
+.cert-items {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 16px;
+    transition: all 0.3s ease;
+}
+
+.cert-item:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateX(10px);
+}
+
+.cert-icon {
+    font-size: 2rem;
+    color: var(--heading-color);
+    opacity: 0.9;
+}
+
+.cert-details h4 {
+    font-size: 1.2rem;
+    color: var(--heading-color);
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.cert-details p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+@media (max-width: 1200px) {
+    .certifications-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .certifications-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .cert-category {
+        padding: 30px;
+    }
+}
+
+.timeline-branch-end{
+    opacity: 0;
+}
+
+.timeline-header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-white);
+}
+.timeline-heading{
+    font-size: clamp(3rem, 7vw, 5rem);
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-family: 'ArsenicaDemibold', sans-serif;
+    color: #1f2937;
+    width: 80%;
+}
+
+
+
+/* Timeline End */
+
+/* Media Queries */
+
+@media (max-width: 1024px) {
+    .hero-img {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+    }
+
+    .arrow {
+        width: 4rem;
+        height: 3rem;
+    }
+    .timeline-content h3 {
+        font-size: 1.4rem;
+    }
+    .timeline-content h4 {
+        font-size: 1.2rem;
+    }
+    .contributions li {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .menu-col-1 {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .about-content {
+        flex-direction: column-reverse;
+    }
+
+    .about-text {
+        width: 90%;
+    }
+
+    .about-img {
+        width: 350px;
+        height: 450px;
+    }
+    .timeline-branch {
+        width: 30%;
+    }
+    .timeline {
+        padding: 0 0 0 2.4rem;
+    }
+    .timeline-start-page .timeline-branch {
+        margin-left: 0rem;
+    }
+}
+
+@media (max-width: 425px) {
+    .hero-text {
+        font-size: 2.5vw;
+        height: 122%;
+        display: flex;
+        line-height: 6.5vw;
+        align-items: flex-start;
+        z-index: 5;
+        gap: 1rem;
+        flex-direction: column;
+        bottom: 0;
+        padding: 0 4vw;
+        justify-content: center;
+        position: absolute;
+        width: 100%;
+        color: var(--bg-color);
+    }
+    .about-img {
+        width: 90%;
+        height: 400px;
+    }
+    .about-text p {
+        font-size: 16px;
+    }
+    .timeline-branch {
+        width: 40%;
+        height: 3px;
+    }
+    .timeline-branch::before, .timeline-branch::after {
+        width: 10px;
+        height: 10px;
+    }
+    .timeline {
+        gap: 10px;
+        padding: 0 0 0 10px;
+    }
+    .timeline-content {
+        padding: 22px;
+    }
+    #about-us {
+        padding: 100px 0px;
+    }
+}
