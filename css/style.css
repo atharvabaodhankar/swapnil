@@ -960,7 +960,9 @@ body {
     padding: 120px 5%;
     background: linear-gradient(135deg, var(--background-white) 0%, #f8f9fa 100%);
 }
-
+.cert-a{
+    text-decoration: none;
+}
 .certifications-header {
     text-align: center;
     margin-bottom: 80px;
@@ -1047,14 +1049,12 @@ body {
     color: var(--heading-color);
     margin-bottom: 5px;
     font-weight: 600;
-    text-decoration: none;
 }
 
 .cert-details p {
     font-size: 0.95rem;
     color: #666;
     margin-bottom: 8px;
-    text-decoration: none;
 }
 
 @media (max-width: 1200px) {
@@ -1095,6 +1095,96 @@ body {
 
 
 /* Timeline End */
+
+/* Projects Start */
+.projects-section {
+    padding: 100px 5%;
+    background: linear-gradient(135deg, var(--background-white) 0%, #f8f9fa 100%);
+}
+
+.projects-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.projects-header h2 {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--heading-color), #4a4a4a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-family: 'ArsenicaDemibold', sans-serif;
+}
+
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.project-title {
+    font-size: 1.8rem;
+    color: var(--heading-color);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.project-title i {
+    font-size: 1.5rem;
+    opacity: 0.8;
+}
+
+.project-description {
+    color: #374151;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.tech-stack {
+    font-style: italic;
+    color: #6b7280;
+    margin-bottom: 15px;
+}
+
+.tech-stack-label {
+    font-weight: 600;
+    color: var(--heading-color);
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-card {
+        padding: 25px;
+    }
+    
+    .project-title {
+        font-size: 1.5rem;
+    }
+}
+/* Projects Start End */
 
 /* Media Queries */
 
