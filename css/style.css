@@ -655,7 +655,198 @@ body {
 
 /* Timeline End */
 
+/* Skills Section */
+#skills {
+    padding: 100px 5%;
+    background: linear-gradient(135deg, var(--background-white) 0%, #f8f9fa 100%);
+}
 
+.skills-header {
+    text-align: center;
+    margin-bottom: 60px;
+    opacity: 1;
+    transform: translateY(30px);
+}
+
+
+
+.skills-header h2 {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--heading-color), #4a4a4a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    font-family: 'ArsenicaDemibold', sans-serif;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.skill-category {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    opacity: 1;
+}
+
+.skill-category:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.skill-category h3 {
+    font-size: 1.8rem;
+    background: linear-gradient(45deg, var(--heading-color), #4a4a4a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+    font-family: 'ArsenicaDemibold', sans-serif;
+}
+
+.skill-items {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.skill-item {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.skill-name {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.skill-name::after {
+    content: attr(data-progress)'%';
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.skill-bar {
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--heading-color), #4a4a4a);
+    border-radius: 10px;
+    width: 0;
+    transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+}
+.skill-category:hover .skill-progress::after{
+    animation: shine 2s ;
+}
+
+@keyframes shine {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+.skill-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.skill-badge {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1rem;
+    color: var(--heading-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+    backdrop-filter: blur(10px);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.endorsement {
+    font-size: 0.85rem;
+    color: var(--heading-color);
+    background: linear-gradient(135deg, var(--heading-color) 0%, #4a4a4a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 8px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.endorsement::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 4px;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--heading-color) 0%, #4a4a4a 100%);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+}
+
+.skill-badge:hover {
+    background: var(--heading-color);
+    color: white;
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .skills-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .skill-category {
+        padding: 20px;
+    }
+}
 
 /* Media Queries */
 
