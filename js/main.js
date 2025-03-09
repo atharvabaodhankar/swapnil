@@ -186,6 +186,29 @@ gsap.to(".timeline", {
   },
 });
 
+// Initialize Project Swiper
+const projectSwiper = new Swiper('.project-swiper', {
+    slidesPerView: 1,
+    spaceBetween: 30,
+    loop: true,
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+    },
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+        640: {
+            slidesPerView: 2
+        },
+        1024: {
+            slidesPerView: 3
+        }
+    }
+});
+
 // gsap.to(".timeline", {
 //   xPercent: -530,
 //   ease: "none",
