@@ -191,13 +191,26 @@ const projectSwiper = new Swiper('.project-swiper', {
     slidesPerView: 1,
     spaceBetween: 30,
     loop: true,
+    autoplay: {
+        delay: 2000,
+        disableOnInteraction: false,
+    },
     pagination: {
         el: '.swiper-pagination',
-        clickable: true
+        clickable: true,
+        dynamicBullets: true, // Adds dynamic bullets that grow/shrink
+        dynamicMainBullets: 3 // Number of bullets to show before/after current
     },
     navigation: {
         nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
+        prevEl: '.swiper-button-prev',
+        hideOnClick: true, // Hides navigation on click
+        disabledClass: 'swiper-button-disabled',
+        lockClass: 'swiper-button-lock'
+    },
+    keyboard: {
+        enabled: true, // Enables keyboard navigation
+        onlyInViewport: true
     },
     breakpoints: {
         640: {
@@ -209,15 +222,7 @@ const projectSwiper = new Swiper('.project-swiper', {
     }
 });
 
-// gsap.to(".timeline", {
-//   xPercent: -530,
-//   ease: "none",
-//   scrollTrigger: {
-//     scroller: "body",
-//     trigger: "#timeline",
-//     scrub: true,
-//     start: "top top",
-//     end: "+400% top",
-//     pin: true,
-//   },
-// })
+// Add navigation visibility toggle on hover
+
+
+

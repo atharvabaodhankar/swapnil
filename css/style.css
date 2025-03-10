@@ -1113,7 +1113,6 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 20px;
     font-family: 'ArsenicaDemibold', sans-serif;
 }
 
@@ -1291,8 +1290,10 @@ body {
 }
 .project-swiper {
     width: 100%;
-    padding: 20px;
+    padding: 20px 20px 60px;
     position: relative;
+    padding-top: 4rem !important;
+    padding-bottom: 5rem !important;
 }
 
 .project-swiper .swiper-slide {
@@ -1362,7 +1363,6 @@ body {
 
 .projects-header {
     text-align: center;
-    margin-bottom: 60px;
 }
 
 .projects-header h2 {
