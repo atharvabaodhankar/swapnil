@@ -1355,6 +1355,135 @@ body {
 
 /* Timeline End */
 
+/* Education Section */
+.education-section {
+    padding: 100px 5%;
+    background: linear-gradient(135deg, var(--background-white) 0%, #f8f9fa 100%);
+    position: relative;
+}
+
+.education-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.education-header h2 {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--heading-color), #4a4a4a);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'ArsenicaDemibold', sans-serif;
+}
+
+.education-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: var(--heading-color);
+    opacity: 0.2;
+}
+
+.education-item {
+    position: relative;
+    margin-bottom: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.education-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: var(--heading-color);
+    border-radius: 50%;
+    z-index: 2;
+}
+
+.education-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    width: calc(50% - 50px);
+    position: relative;
+}
+
+.education-item:nth-child(odd) .education-content {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.education-item:nth-child(even) .education-content {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.education-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.education-text {
+    margin-top: 20px;
+}
+
+.education-year {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--heading-color);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.education-text h3 {
+    font-size: 1.8rem;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.education-text h4 {
+    font-size: 1.4rem;
+    color: #4a4a4a;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    .education-timeline::before {
+        left: 30px;
+    }
+
+    .education-marker {
+        left: 30px;
+    }
+
+    .education-content {
+        width: calc(100% - 80px);
+        margin-left: 80px !important;
+    }
+
+    .education-header h2 {
+        font-size: 2.5rem;
+    }
+}
+
 /* Projects Start */
 .projects-section {
     padding: 100px 5%;
@@ -1468,6 +1597,12 @@ body {
     .contributions li {
         font-size: 14px;
     }
+    .education-text h3 {
+        font-size: 1.6rem;
+    }
+    .education-text h4 {
+        font-size: 1.2rem;
+    }
 }
 
 
@@ -1501,6 +1636,15 @@ body {
     }
     .timeline-start-page .timeline-branch {
         margin-left: 0rem;
+    }
+    .education-text h3 {
+        font-size: 1.4rem;
+    }
+    .education-text h4 {
+        font-size: 1rem;
+    }
+    .education-content {
+        padding: 20px;
     }
 }
 
@@ -1545,5 +1689,22 @@ body {
     }
     #about-us {
         padding: 100px 0px;
+    }
+    .education-text h3 {
+        font-size: 1.1rem;
+    }
+    .education-text h4 {
+        font-size: 0.9rem;
+    }
+    .education-content {
+        width: calc(100% - 54px);
+        margin-left: 54px !important;
+    }
+}
+
+
+@media (max-width: 330px) {
+    .cert-category {
+        padding: 30px 10px;
     }
 }
