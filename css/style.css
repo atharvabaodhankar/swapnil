@@ -1700,6 +1700,16 @@ body {
         width: calc(100% - 54px);
         margin-left: 54px !important;
     }
+    .education-content {
+        width: calc(100% - 30px);
+        margin-left: 30px !important;
+    }
+    .education-timeline::before {
+        left: 10px;
+    }
+    .education-marker {
+        left: 10px;
+    }
 }
 
 
