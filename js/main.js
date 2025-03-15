@@ -3,41 +3,60 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize GSAP timeline for preloader
   const preloaderTl = gsap.timeline();
   
-  // Animate logo letters appearance
+  // Animate logo letters appearance - reduced duration
   preloaderTl.to(".logo-letter", {
     opacity: 1,
     y: 0,
-    stagger: 0.2,
-    duration: 1,
+    stagger: 0.1, // Reduced from 0.2
+    duration: 0.6, // Reduced from 1
     ease: "power3.out"
   });
   
   // Animate logo letter underlines
   preloaderTl.to(".logo-letter::after", {
     width: "100%",
-    duration: 0.8,
-    stagger: 0.2,
+    duration: 0.5, // Reduced from 0.8
+    stagger: 0.1, // Reduced from 0.2
     ease: "power2.out"
-  }, "-=0.5");
+  }, "-=0.3"); // Faster overlap
   
   // Animate text appearance
   preloaderTl.to(".preloader-text", {
     opacity: 1,
-    duration: 0.8,
+    duration: 0.5, // Reduced from 0.8
     ease: "power2.out",
     onComplete: () => {
-      // Start glitch effect after text appears
-      glitchEffect();
+      // Start glitch effect after text appears - only once
+      glitchEffect(false); // Pass false to not repeat
     }
-  }, "-=0.5");
+  }, "-=0.3"); // Faster overlap
+  
+  // Animate tech icons
+  preloaderTl.to(".preloader-tech-icons", {
+    opacity: 1,
+    y: 0,
+    duration: 0.5,
+    ease: "power2.out"
+  }, "-=0.2");
+  
+  // Animate each tech icon with a stagger
+  preloaderTl.to(".preloader-tech-icons i", {
+    scale: 1.2,
+    color: "white",
+    stagger: 0.1,
+    duration: 0.3,
+    repeat: 1,
+    yoyo: true,
+    ease: "power2.inOut"
+  }, "-=0.3");
   
   // Function to create glitch effect
-  function glitchEffect() {
+  function glitchEffect(repeat = true) {
     // Glitch the main text
     gsap.to(".preloader-text", {
       skewX: 2,
       duration: 0.1,
-      repeat: 5,
+      repeat: 2, // Reduced from 5
       yoyo: true,
       ease: "power4.inOut"
     });
@@ -47,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       opacity: 0.8,
       duration: 0.1,
       transform: "translate(-5px, 0)",
-      repeat: 5,
+      repeat: 2, // Reduced from 5
       yoyo: true
     });
     
@@ -55,13 +74,15 @@ document.addEventListener("DOMContentLoaded", () => {
       opacity: 0.8,
       duration: 0.1,
       transform: "translate(5px, 0)",
-      repeat: 5,
+      repeat: 2, // Reduced from 5
       yoyo: true
     });
     
-    // Repeat the glitch effect randomly
-    const delay = 2 + Math.random() * 3;
-    gsap.delayedCall(delay, glitchEffect);
+    // Only repeat if specified
+    if (repeat) {
+      const delay = 1 + Math.random() * 1; // Reduced from 2 + random * 3
+      gsap.delayedCall(delay, glitchEffect);
+    }
   }
   
   // Animate dots
@@ -69,11 +90,11 @@ document.addEventListener("DOMContentLoaded", () => {
     opacity: 0.8,
     scale: 1.2,
     stagger: {
-      each: 0.2,
-      repeat: -1,
+      each: 0.1, // Reduced from 0.2
+      repeat: 2, // Limited repeats instead of -1 (infinite)
       yoyo: true
     },
-    duration: 0.6,
+    duration: 0.4, // Reduced from 0.6
     ease: "power2.inOut"
   }, "<");
   
@@ -81,10 +102,10 @@ document.addEventListener("DOMContentLoaded", () => {
   preloaderTl.to(".preloader-shape", {
     scale: 1.2,
     opacity: 0.2,
-    stagger: 0.2,
-    duration: 1.5,
+    stagger: 0.1, // Reduced from 0.2
+    duration: 1, // Reduced from 1.5
     ease: "power2.inOut",
-    repeat: -1,
+    repeat: 1, // Limited repeats instead of -1 (infinite)
     yoyo: true
   }, "<");
   
@@ -95,28 +116,28 @@ document.addEventListener("DOMContentLoaded", () => {
   
   preloaderTl.to(counter, {
     value: 100,
-    duration: 3,
+    duration: 1.8, // Reduced from 3
     ease: "power2.inOut",
     onUpdate: () => {
       const value = Math.round(counter.value);
       counterElement.textContent = `${value}%`;
       progressBar.style.width = `${value}%`;
     }
-  }, "<0.5");
+  }, "<0.2"); // Faster start
   
   // Final animation to hide preloader
   preloaderTl.to(".preloader-content > *", {
     opacity: 0,
     y: -20,
-    stagger: 0.1,
-    duration: 0.8,
+    stagger: 0.05, // Reduced from 0.1
+    duration: 0.5, // Reduced from 0.8
     ease: "power3.in"
   });
   
   // Create a reveal effect for the main content
   preloaderTl.to(".preloader", {
     y: "-100%",
-    duration: 1.2,
+    duration: 0.8, // Reduced from 1.2
     ease: "power4.inOut",
     onComplete: () => {
       // Enable scrolling and other interactions after preloader is gone
@@ -126,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Remove preloader from DOM after animation completes
       setTimeout(() => {
         document.querySelector(".preloader").style.display = "none";
-      }, 300);
+      }, 200); // Reduced from 300
       
       // Initialize the rest of the page animations
       initPageAnimations();

@@ -83,17 +83,56 @@
 .preloader-text {
     font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
+    text-align: center;
     color: rgba(255, 255, 255, 0.7);
     letter-spacing: 3px;
     text-transform: uppercase;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
     opacity: 0;
     position: relative;
 }
 
+.preloader-tech-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.preloader-tech-icons i {
+    font-size: 1.5rem;
+    color: burlywood;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.preloader-tech-icons i::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, burlywood, white);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.preloader-tech-icons i:hover {
+    color: white;
+    transform: translateY(-3px);
+}
+
+.preloader-tech-icons i:hover::after {
+    transform: scaleX(1);
+}
+
 .preloader-text::before,
 .preloader-text::after {
-    content: 'Loading Experience';
+    content: 'Building Digital Excellence';
     position: absolute;
     top: 0;
     left: 0;
