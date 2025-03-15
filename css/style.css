@@ -17,6 +17,218 @@
     /* Light grey for borders */
     --background-white : #EEEFF2;
 }
+
+/* Global Box Sizing */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Preloader Styles */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--wave-black);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.preloader-content {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.preloader-logo {
+    font-family: 'ArsenicaDemibold', sans-serif;
+    font-size: 5rem;
+    color: white;
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.logo-letter {
+    opacity: 0;
+    transform: translateY(20px);
+    display: inline-block;
+    position: relative;
+}
+
+.logo-letter::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, burlywood, white);
+    transition: width 0.5s ease;
+}
+
+.preloader-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    opacity: 0;
+    position: relative;
+}
+
+.preloader-text::before,
+.preloader-text::after {
+    content: 'Loading Experience';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}
+
+.preloader-text::before {
+    color: #ff00ff;
+    z-index: -1;
+}
+
+.preloader-text::after {
+    color: #00ffff;
+    z-index: -2;
+}
+
+@keyframes glitch {
+    0% {
+        transform: translate(0);
+    }
+    20% {
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        transform: translate(2px, 2px);
+    }
+    80% {
+        transform: translate(2px, -2px);
+    }
+    100% {
+        transform: translate(0);
+    }
+}
+
+.preloader-progress-container {
+    width: 100%;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.preloader-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, burlywood, white);
+    border-radius: 4px;
+    position: relative;
+}
+
+.preloader-progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.preloader-counter {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.preloader-dots {
+    display: flex;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.3;
+}
+
+.preloader-shapes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.preloader-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.1;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    background-color: burlywood;
+    top: -150px;
+    right: -150px;
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    bottom: -100px;
+    left: -100px;
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    background-color: var(--heading-color);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 @font-face {
     font-family: ArsenicaDemibold;
@@ -28,13 +240,25 @@
     src: url(../e9849a0be596192c822daa1765c81db9.woff2);
 }
 
-
 body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-color);
     overflow-x: hidden;
     line-height: 1.2;
+    width: 100%;
+    position: relative;
+}
+
+html {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+main {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
 }
 
 #sample {
@@ -445,6 +669,7 @@ body {
     background: var(--background-white);
     position: relative;
     overflow: hidden;
+    max-width: 100vw;
 }
 
 .timeline {
@@ -456,6 +681,7 @@ body {
     gap: 2rem;
     padding: 0 4rem;
     position: relative;
+    overflow: hidden;
 }
 
 .timeline-content {
@@ -1768,7 +1994,7 @@ body {
 
 .footer-brand h3 {
     font-family: 'ArsenicaDemibold', sans-serif;
-    font-size: 2rem;
+    font-size: 3rem;
     background: linear-gradient(45deg, #fff, rgba(255, 255, 255, 0.7));
     -webkit-background-clip: text;
     background-clip: text;
@@ -1783,12 +2009,12 @@ body {
 
 .footer-links h4 {
     font-family: 'ArsenicaDemibold', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     color: white;
     margin-bottom: 25px;
 }
 
-.footer-links ul {
+.footer-links ul {  
     list-style: none;
     padding: 0;
 }

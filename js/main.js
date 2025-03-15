@@ -1,3 +1,164 @@
+// Preloader Animation
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize GSAP timeline for preloader
+  const preloaderTl = gsap.timeline();
+  
+  // Animate logo letters appearance
+  preloaderTl.to(".logo-letter", {
+    opacity: 1,
+    y: 0,
+    stagger: 0.2,
+    duration: 1,
+    ease: "power3.out"
+  });
+  
+  // Animate logo letter underlines
+  preloaderTl.to(".logo-letter::after", {
+    width: "100%",
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power2.out"
+  }, "-=0.5");
+  
+  // Animate text appearance
+  preloaderTl.to(".preloader-text", {
+    opacity: 1,
+    duration: 0.8,
+    ease: "power2.out",
+    onComplete: () => {
+      // Start glitch effect after text appears
+      glitchEffect();
+    }
+  }, "-=0.5");
+  
+  // Function to create glitch effect
+  function glitchEffect() {
+    // Glitch the main text
+    gsap.to(".preloader-text", {
+      skewX: 2,
+      duration: 0.1,
+      repeat: 5,
+      yoyo: true,
+      ease: "power4.inOut"
+    });
+    
+    // Show and animate the pseudo-elements
+    gsap.to(".preloader-text::before", {
+      opacity: 0.8,
+      duration: 0.1,
+      transform: "translate(-5px, 0)",
+      repeat: 5,
+      yoyo: true
+    });
+    
+    gsap.to(".preloader-text::after", {
+      opacity: 0.8,
+      duration: 0.1,
+      transform: "translate(5px, 0)",
+      repeat: 5,
+      yoyo: true
+    });
+    
+    // Repeat the glitch effect randomly
+    const delay = 2 + Math.random() * 3;
+    gsap.delayedCall(delay, glitchEffect);
+  }
+  
+  // Animate dots
+  preloaderTl.to(".dot", {
+    opacity: 0.8,
+    scale: 1.2,
+    stagger: {
+      each: 0.2,
+      repeat: -1,
+      yoyo: true
+    },
+    duration: 0.6,
+    ease: "power2.inOut"
+  }, "<");
+  
+  // Animate shapes
+  preloaderTl.to(".preloader-shape", {
+    scale: 1.2,
+    opacity: 0.2,
+    stagger: 0.2,
+    duration: 1.5,
+    ease: "power2.inOut",
+    repeat: -1,
+    yoyo: true
+  }, "<");
+  
+  // Counter and progress bar animation
+  let counter = { value: 0 };
+  const counterElement = document.querySelector(".preloader-counter");
+  const progressBar = document.querySelector(".preloader-progress-bar");
+  
+  preloaderTl.to(counter, {
+    value: 100,
+    duration: 3,
+    ease: "power2.inOut",
+    onUpdate: () => {
+      const value = Math.round(counter.value);
+      counterElement.textContent = `${value}%`;
+      progressBar.style.width = `${value}%`;
+    }
+  }, "<0.5");
+  
+  // Final animation to hide preloader
+  preloaderTl.to(".preloader-content > *", {
+    opacity: 0,
+    y: -20,
+    stagger: 0.1,
+    duration: 0.8,
+    ease: "power3.in"
+  });
+  
+  // Create a reveal effect for the main content
+  preloaderTl.to(".preloader", {
+    y: "-100%",
+    duration: 1.2,
+    ease: "power4.inOut",
+    onComplete: () => {
+      // Enable scrolling and other interactions after preloader is gone
+      document.body.style.overflow = "auto";
+      document.body.style.overflowX = "hidden"; // Ensure horizontal scrolling stays disabled
+      
+      // Remove preloader from DOM after animation completes
+      setTimeout(() => {
+        document.querySelector(".preloader").style.display = "none";
+      }, 300);
+      
+      // Initialize the rest of the page animations
+      initPageAnimations();
+    }
+  });
+  
+  // Prevent scrolling during preloader
+  document.body.style.overflow = "hidden";
+});
+
+// Function to initialize page animations after preloader
+function initPageAnimations() {
+  // Initialize Lenis smooth scrolling
+  initLenis();
+  
+  // Add any other initialization code here
+  // This ensures animations start after preloader is complete
+}
+
+// Initialize Lenis smooth scrolling
+function initLenis() {
+  const lenis = new Lenis({
+    lerp: 0.05,
+  });
+  
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+}
+
 const lenis = new Lenis({
   lerp: 0.05,
 });
