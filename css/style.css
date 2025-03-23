@@ -718,7 +718,6 @@ main {
     align-items: center;
     justify-content: center;
     gap: 2rem;
-    padding: 0 4rem;
     position: relative;
     overflow: hidden;
 }
@@ -767,7 +766,9 @@ main {
 .timeline-branch::after {
     right: 0;
 }
-
+.timeline-start-page{
+    padding-left: 4rem;
+}
 .timeline-start-page .timeline-branch {
     border-radius: 3rem 0 0 3rem;
     margin-left: 3rem;

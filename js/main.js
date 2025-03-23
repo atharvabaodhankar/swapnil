@@ -1,5 +1,11 @@
 // Preloader Animation
 document.addEventListener("DOMContentLoaded", () => {
+  // Initially hide hero elements
+  gsap.set([".marquee_inner", ".hero-text h1", ".hero-img"], {
+    opacity: 0,
+    y: 100
+  });
+  
   // Initialize GSAP timeline for preloader
   const preloaderTl = gsap.timeline();
   
@@ -137,19 +143,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Create a reveal effect for the main content
   preloaderTl.to(".preloader", {
     y: "-100%",
-    duration: 0.8, // Reduced from 1.2
+    duration: 0.8,
     ease: "power4.inOut",
     onComplete: () => {
-      // Enable scrolling and other interactions after preloader is gone
       document.body.style.overflow = "auto";
-      document.body.style.overflowX = "hidden"; // Ensure horizontal scrolling stays disabled
+      document.body.style.overflowX = "hidden";
       
-      // Remove preloader from DOM after animation completes
-      setTimeout(() => {
-        document.querySelector(".preloader").style.display = "none";
-      }, 200); // Reduced from 300
+      // Remove preloader immediately to prevent any flash
+      document.querySelector(".preloader").style.display = "none";
       
-      // Initialize the rest of the page animations
+      // Start page animations immediately after preloader is gone
       initPageAnimations();
     }
   });
@@ -163,8 +166,36 @@ function initPageAnimations() {
   // Initialize Lenis smooth scrolling
   initLenis();
   
-  // Add any other initialization code here
-  // This ensures animations start after preloader is complete
+  // Initialize and start marquee immediately
+  const marqueeAnim = initMarquee();
+  marqueeAnim.play().progress(0.5);
+  
+  // Create a timeline for the cinematic sequence
+  const mainTl = gsap.timeline({delay: 0.1}); // Small delay to ensure clean transition
+  
+  // 1. Reveal the marquee opacity only (it's already moving)
+  mainTl.to(".marquee_inner", {
+    opacity: 1,
+    duration: 0.8,
+    ease: "power2.out"
+  })
+  
+  // 2. Reveal hero text lines sequentially
+  .to(".hero-text h1", {
+    opacity: 1,
+    y: 0,
+    duration: 1.2,
+    stagger: 0.3,
+    ease: "power3.out"
+  }, "-=0.3")
+  
+  // 3. Finally reveal the hero image with a fade up
+  .to(".hero-img", {
+    opacity: 1,
+    y: 0,
+    duration: 1.2,
+    ease: "power2.out"
+  }, "-=0.7");
 }
 
 // Initialize Lenis smooth scrolling
@@ -266,30 +297,40 @@ menuToggle.addEventListener("click", () => {
 });
 
 // Marquee
-
-function marquee() {
+function initMarquee() {
   let currentScroll = 0;
   let isScrollingDown = true;
   let arrows = document.querySelectorAll(".arrow");
 
-  let tween = gsap
-    .to(".marquee_part", {
-      xPercent: -100,
-      repeat: -1,
-      duration: 10,
-      ease: "linear",
-    })
-    .totalProgress(0.5);
-  gsap.set(".marquee_inner", { xPercent: -50 });
+  // Set initial position but keep opacity 0
+  gsap.set(".marquee_inner", { 
+    xPercent: -50,
+    opacity: 0,
+    y: 0 // Reset y position since we don't need the slide up anymore
+  });
+  
+  // Create the marquee animation
+  const marqueeAnim = gsap.to(".marquee_part", {
+    xPercent: -100,
+    repeat: -1,
+    duration: 15,
+    ease: "none",
+    paused: true
+  });
 
+  // Handle scroll direction
   window.addEventListener("scroll", () => {
     if (window.pageYOffset > currentScroll) {
       isScrollingDown = true;
     } else {
       isScrollingDown = false;
     }
-    gsap.to(tween, {
+    
+    // Smooth transition for direction change
+    gsap.to(marqueeAnim, {
       timeScale: isScrollingDown ? 1 : -1,
+      duration: 0.3,
+      ease: "power2.out"
     });
 
     arrows.forEach((arrow) => {
@@ -302,8 +343,9 @@ function marquee() {
 
     currentScroll = window.pageYOffset;
   });
+  
+  return marqueeAnim;
 }
-marquee();
 
 // Parallax Image
 
