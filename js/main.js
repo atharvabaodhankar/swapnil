@@ -448,5 +448,61 @@ const projectSwiper = new Swiper('.project-swiper', {
 
 // Add navigation visibility toggle on hover
 
+// About Me Section Animations
+gsap.from(".about-header h2", {
+  scrollTrigger: {
+    trigger: window.innerWidth < 768 ? ".about-header" : "#about-us",
+    start: () => window.innerWidth < 768 ? "top 90%" : "top 80%",
+    end: () => window.innerWidth < 768 ? "top 30%" : "top 20%",
+    scrub: 1,
+    toggleActions: "play none none reverse"
+  },
+  y: 100,
+  opacity: 0,
+  duration: 1,
+  ease: "none"
+});
+
+gsap.from(".about-header .line", {
+  scrollTrigger: {
+    trigger: window.innerWidth < 768 ? ".about-header" : "#about-us",
+    start: () => window.innerWidth < 768 ? "top 90%" : "top 80%",
+    end: () => window.innerWidth < 768 ? "top 30%" : "top 20%",
+    scrub: 1.2,
+    toggleActions: "play none none reverse"
+  },
+  scaleX: 0,
+  duration: 1,
+  ease: "none"
+});
+
+gsap.from(".about-text p", {
+  scrollTrigger: {
+    trigger: window.innerWidth < 768 ? ".about-header" : "#about-us",
+    start: () => window.innerWidth < 768 ? "top 90%" : "top 80%",
+    end: () => window.innerWidth < 768 ? "top 30%" : "top 20%",
+    scrub: 0.8,
+    toggleActions: "play none none reverse"
+  },
+  y: 50,
+  opacity: 0,
+  duration: 1,
+  stagger: 0.2,
+  ease: "none"
+});
+
+gsap.from(".about-img", {
+  scrollTrigger: {
+    trigger: "#about-us",
+    start: () => window.innerWidth < 768 ? "top 90%" : "top 80%",
+    end: () => window.innerWidth < 768 ? "top 30%" : "top 20%",
+    scrub: 1.5,
+    toggleActions: "play none none reverse"
+  },
+  opacity: 0,
+  duration: 1,
+  ease: "none"
+});
+
 
 
