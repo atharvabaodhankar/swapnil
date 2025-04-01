@@ -9,6 +9,69 @@ document.addEventListener("DOMContentLoaded", () => {
   // Initialize GSAP timeline for preloader
   const preloaderTl = gsap.timeline();
   
+  // Track loading status
+  let heroImageLoaded = false;
+  let preloaderAnimationComplete = false;
+  let fallbackTimeout = null;
+  
+  // Function to check if we can hide the preloader
+  const tryHidePreloader = () => {
+    if (heroImageLoaded && preloaderAnimationComplete) {
+      // Clear fallback timeout if it exists
+      if (fallbackTimeout) {
+        clearTimeout(fallbackTimeout);
+      }
+      
+      // Hide preloader and show content
+      hidePreloader();
+    }
+  };
+  
+  // Function to hide preloader and show content
+  const hidePreloader = () => {
+    // Create a reveal effect for the main content
+    gsap.to(".preloader", {
+      y: "-100%",
+      duration: 0.8,
+      ease: "power4.inOut",
+      onComplete: () => {
+        document.body.style.overflow = "auto";
+        document.body.style.overflowX = "hidden";
+        
+        // Remove preloader immediately to prevent any flash
+        document.querySelector(".preloader").style.display = "none";
+        
+        // Start page animations immediately after preloader is gone
+        initPageAnimations();
+      }
+    });
+  };
+  
+  // Preload hero image
+  const heroImage = new Image();
+  heroImage.src = document.querySelector(".hero-img img").src;
+  
+  // Set a fallback timeout (5 seconds) in case the image fails to load
+  fallbackTimeout = setTimeout(() => {
+    console.log("Fallback timeout triggered - forcing preloader to complete");
+    heroImageLoaded = true;
+    tryHidePreloader();
+  }, 5000);
+  
+  // When hero image loads
+  heroImage.onload = () => {
+    console.log("Hero image loaded");
+    heroImageLoaded = true;
+    tryHidePreloader();
+  };
+  
+  // When hero image fails to load
+  heroImage.onerror = () => {
+    console.log("Hero image failed to load");
+    heroImageLoaded = true; // Proceed anyway
+    tryHidePreloader();
+  };
+  
   // Animate logo letters appearance - reduced duration
   preloaderTl.to(".logo-letter", {
     opacity: 1,
@@ -131,29 +194,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, "<0.2"); // Faster start
   
-  // Final animation to hide preloader
+  // Final animation to hide preloader content
   preloaderTl.to(".preloader-content > *", {
     opacity: 0,
     y: -20,
     stagger: 0.05, // Reduced from 0.1
     duration: 0.5, // Reduced from 0.8
-    ease: "power3.in"
-  });
-  
-  // Create a reveal effect for the main content
-  preloaderTl.to(".preloader", {
-    y: "-100%",
-    duration: 0.8,
-    ease: "power4.inOut",
+    ease: "power3.in",
     onComplete: () => {
-      document.body.style.overflow = "auto";
-      document.body.style.overflowX = "hidden";
-      
-      // Remove preloader immediately to prevent any flash
-      document.querySelector(".preloader").style.display = "none";
-      
-      // Start page animations immediately after preloader is gone
-      initPageAnimations();
+      preloaderAnimationComplete = true;
+      tryHidePreloader();
     }
   });
   
@@ -503,6 +553,3 @@ gsap.from(".about-img", {
   duration: 1,
   ease: "none"
 });
-
-
-
