@@ -402,7 +402,7 @@ gsap.to(".timeline", {
   scrollTrigger: {
     scroller: "body",
     trigger: "#timeline",
-    scrub: true,
+    scrub: 1.5,
     start: "top top",
     end: () => `+=${100 * totalSections}%`, // Dynamic end point based on number of sections
     pin: true,
